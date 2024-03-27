@@ -115,7 +115,7 @@ export const fetchProductFailure = (error) => {
 
 export const fetchProducts = () => {
     return function (dispatch) {
-        axios.get("http://localhost:3001/products")
+        axios.get("https://e-commerce-app-pearl-one.vercel.app/db.json/products")
             .then((response) => {
                 if (response.status === 200) {
                     dispatch(fetchProductSuccess(response.data))
