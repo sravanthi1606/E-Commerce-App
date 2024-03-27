@@ -18,7 +18,7 @@ export const fetchProductsFailure = (error) => {
 
 export const fetchProduct = (id) => {
     return function (dispatch) {
-        axios.get(`http://localhost:3001/products/${id}`)
+        axios.get(`https://products-9fsh.onrender.com/products/${id}`)
             .then((response) => {
                 if (response.status === 200) {
                     dispatch(fetchProductsSuccess(response.data))
@@ -115,7 +115,7 @@ export const fetchProductFailure = (error) => {
 
 export const fetchProducts = () => {
     return function (dispatch) {
-        axios.get("http://localhost:3001/products")
+        axios.get("https://products-9fsh.onrender.com/products")
             .then((response) => {
                 if (response.status === 200) {
                     dispatch(fetchProductSuccess(response.data))
@@ -137,7 +137,7 @@ export const fetchProducts = () => {
 
 export const DeleteProducts = (productId) => {
     return function (dispatch) {
-        axios.delete(`http://localhost:3001/products/${productId}`)
+        axios.delete(`https://products-9fsh.onrender.com/products/${productId}`)
             .then(() => {
                 dispatch({
                     type: "DELETE_PRODUCT",
@@ -155,7 +155,7 @@ export const DeleteProducts = (productId) => {
 
 export const AddingProducts = (data) => {
     return function (dispatch) {
-        axios.post(`http://localhost:3001/products`, data)
+        axios.post(`https://products-9fsh.onrender.com/products`, data)
             .then(() => {
                 dispatch({
                     type: "ADD_PRODUCT",
@@ -173,7 +173,7 @@ export const AddingProducts = (data) => {
 
 export const EditProducts = (data, id) => {
     return function (dispatch) {
-        axios.put(`http://localhost:3001/products/${id}`, data)
+        axios.put(`https://products-9fsh.onrender.com/products/${id}`, data)
             .then(() => {
                 dispatch({
                     type: "EDIT_UPDATE_PRODUCT",

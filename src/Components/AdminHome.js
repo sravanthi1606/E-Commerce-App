@@ -62,7 +62,7 @@ const AdminHome = () => {
 
 
     return (
-        <div>
+        <div >
             <h1 className="productlist_heading">Product List</h1>
             <div className="search_add_section">
                 <input type="text" placeholder="search for product by name" value={search} onChange={(event) => setSearch(event.target.value)}></input><br></br>
