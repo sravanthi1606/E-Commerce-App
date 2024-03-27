@@ -39,7 +39,6 @@ const Modaladd = (props) =>{
             "rating":parseFloat(rating),
             "image":image
         }
-        console.log(data);
         dispatch(AddingProducts(data))
         navigate("/home")
         props.CloseForm();

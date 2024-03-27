@@ -18,7 +18,7 @@ export const fetchProductsFailure = (error) => {
 
 export const fetchProduct = (id) => {
     return function (dispatch) {
-        axios.get(`http://localhost:3001/products/${id}`)
+        axios.get(`https://e-commerce-app-pearl-one.vercel.app/db.json/products/${id}`)
             .then((response) => {
                 if (response.status === 200) {
                     dispatch(fetchProductsSuccess(response.data))
@@ -77,11 +77,6 @@ export const setErrorMessage = (message) => ({
     payload: message
 });
 
-// For Original Qunatity
-// export const setOriginalQuantity = (productId, quantity) => ({
-//     type: "SET_ORIGINAL_QUANTITY",
-//     payload: { productId, quantity }
-// });
 
 export const updateCartItemQuantity = (productId, newQuantity) => ({
     type: "UPDATE_CART_ITEM_QUANTITY",
