@@ -18,7 +18,7 @@ export const fetchProductsFailure = (error) => {
 
 export const fetchProduct = (id) => {
     return function (dispatch) {
-        axios.get(`https://e-commerce-app-pearl-one.vercel.app/db.json/products/${id}`)
+        axios.get(`http://localhost:3001/products/${id}`)
             .then((response) => {
                 if (response.status === 200) {
                     dispatch(fetchProductsSuccess(response.data))
@@ -115,7 +115,7 @@ export const fetchProductFailure = (error) => {
 
 export const fetchProducts = () => {
     return function (dispatch) {
-        axios.get("https://e-commerce-app-pearl-one.vercel.app/db.json/products")
+        axios.get("http://localhost:3001/products")
             .then((response) => {
                 if (response.status === 200) {
                     dispatch(fetchProductSuccess(response.data))
