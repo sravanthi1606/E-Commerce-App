@@ -50,26 +50,6 @@ const AdminHome = () => {
         }
     }
 
-    // const handleDelete = (productId) => {
-    //     dispatch(DeleteProducts(productId))
-    //     dispatch(fetchProducts())
-    //     toast.success("Deleted an Item !!")
-    // }
-
-    // const [isDeleting, setIsDeleting] = useState(false);
-
-    // const handleDelete = async (productId) => {
-    //     try {
-    //         setIsDeleting(true);
-    //         await dispatch(DeleteProducts(productId));
-    //         setIsDeleting(false);
-    //         toast.success("Product deleted successfully!");
-    //     } catch (error) {
-    //         console.error("Error deleting product:", error);
-    //         setIsDeleting(false);
-    //         toast.error("Failed to delete product.");
-    //     }
-    // };
 
 
     let showForm = () => {
