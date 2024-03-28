@@ -62,7 +62,6 @@ export const addCart = (product) => {
 }
 
 
-
 // For Delete item to cart
 export const delCart = (product) => {
     return {
@@ -77,7 +76,7 @@ export const setErrorMessage = (message) => ({
     payload: message
 });
 
-
+// For Updating the Quantity of item
 export const updateCartItemQuantity = (productId, newQuantity) => ({
     type: "UPDATE_CART_ITEM_QUANTITY",
     payload: { productId, newQuantity }
@@ -135,7 +134,6 @@ export const fetchProducts = () => {
 
 // For deleting particular product in productlist in admin page
 
-
 export const DeleteProducts = (productId) => {
     return async function (dispatch) {
         try {
@@ -149,15 +147,13 @@ export const DeleteProducts = (productId) => {
                 
             }
         } catch (error) {
-            console.error("Error eDeleITNG product:", error);
+            console.error("Error Deleting product:", error);
         }
     };
 };
 
 
 // For adding particular product in productlist in admin page
-
-
 
 export const AddingProducts = (data) => {
     return async function (dispatch) {
@@ -183,8 +179,6 @@ export const AddingProducts = (data) => {
 
 // For editing and updating particular product in productlist in admin page
 
-
-
 export const EditProducts = (data,id) => {
     return async function (dispatch) {
         try {
@@ -197,7 +191,7 @@ export const EditProducts = (data,id) => {
                 })
             }
         } catch (error) {
-            console.error("Error eDITNG product:", error);
+            console.error("Error Editing product:", error);
         }
     };
 };
