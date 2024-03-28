@@ -23,8 +23,8 @@ const Modaladd = (props) =>{
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const handleSubmit=(event)=>{
-        event.preventDefault();
+    const handleSubmit=async (event)=>{
+       event.preventDefault();
         if(!title || !price || !description || !qty || !category){
             setError("Please enter all fields");
            
@@ -39,11 +39,22 @@ const Modaladd = (props) =>{
             "rating":parseFloat(rating),
             "image":image
         }
-        dispatch(AddingProducts(data))
-        navigate("/home")
-        props.CloseForm();
-        dispatch(fetchProducts())
-        toast.success("Added an item !!")
+        // dispatch(AddingProducts(data))
+        // await dispatch(fetchProducts())
+        // navigate("/home")
+        // props.CloseForm();
+        // // dispatch(fetchProducts())
+        // toast.success("Added an item !!")
+
+        try {
+            await dispatch(AddingProducts(data)); // Wait for AddingProducts to complete
+            await dispatch(fetchProducts()); // Wait for fetchProducts to complete
+            toast.success("Added an item !!");
+            navigate("/home");
+            props.CloseForm();
+        } catch (error) {
+            console.error("Error adding product:", error);
+        }
         
     }
     const handleCancel = (event) => {

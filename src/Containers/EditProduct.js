@@ -37,7 +37,7 @@ const EditProductList = ({ productId, closeForm }) => {
     }, [currentProduct])
 
 
-    const handleEdit = (event) => {
+    const handleEdit = async (event) => {
         event.preventDefault();
         if (!title || !price || !description || !qty || !category || !rating) {
             setError("Please enter all fields");
@@ -57,11 +57,20 @@ const EditProductList = ({ productId, closeForm }) => {
             "rating": parseFloat(rating),
             "image": image
         }
-        dispatch(EditProducts(data, productId))
-        dispatch(fetchProducts())
-        navigate("/adminhome")
-        toast.success("Edited an item")
-        closeForm()
+        // dispatch(EditProducts(data, productId))
+        // dispatch(fetchProducts())
+        // navigate("/adminhome")
+        // toast.success("Edited an item")
+        // closeForm()
+        try {
+            await dispatch(EditProducts(data, productId)); // Wait for AddingProducts to complete
+            await dispatch(fetchProducts()); // Wait for fetchProducts to complete
+            toast.success("Edited an item !!");
+            navigate("/home");
+         closeForm()
+    } catch (error) {
+            console.error("Error Editing product:", error);
+        }
         
 
     }

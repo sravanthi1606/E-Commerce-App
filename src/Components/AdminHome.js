@@ -22,6 +22,7 @@ const AdminHome = () => {
 
     const dispatch = useDispatch();
     const productList = useSelector((state) => state.ProductPage.products)
+    console.log(productList);
 
     const { setIsAuth } = useContext(NavUserContext);
     const navigate = useNavigate();
@@ -37,11 +38,38 @@ const AdminHome = () => {
         dispatch(fetchProducts())
     }, [dispatch ,navigate, setIsAuth])
 
-    const handleDelete = (productId) => {
-        dispatch(DeleteProducts(productId))
-        dispatch(fetchProducts())
-        toast.success("Deleted an Item !!")
+
+    const handleDelete = async (productId) => {
+        try {
+            await dispatch(DeleteProducts(productId)); // Wait for deletion to complete
+            dispatch(fetchProducts()); // Fetch updated product list
+            toast.success("Deleted an Item !!");
+        } catch (error) {
+            console.error("Error deleting product:", error);
+            toast.error("Failed to delete product.");
+        }
     }
+
+    // const handleDelete = (productId) => {
+    //     dispatch(DeleteProducts(productId))
+    //     dispatch(fetchProducts())
+    //     toast.success("Deleted an Item !!")
+    // }
+
+    // const [isDeleting, setIsDeleting] = useState(false);
+
+    // const handleDelete = async (productId) => {
+    //     try {
+    //         setIsDeleting(true);
+    //         await dispatch(DeleteProducts(productId));
+    //         setIsDeleting(false);
+    //         toast.success("Product deleted successfully!");
+    //     } catch (error) {
+    //         console.error("Error deleting product:", error);
+    //         setIsDeleting(false);
+    //         toast.error("Failed to delete product.");
+    //     }
+    // };
 
 
     let showForm = () => {
