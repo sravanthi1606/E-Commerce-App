@@ -39,12 +39,6 @@ const Modaladd = (props) =>{
             "rating":parseFloat(rating),
             "image":image
         }
-        // dispatch(AddingProducts(data))
-        // await dispatch(fetchProducts())
-        // navigate("/home")
-        // props.CloseForm();
-        // // dispatch(fetchProducts())
-        // toast.success("Added an item !!")
 
         try {
             await dispatch(AddingProducts(data)); // Wait for AddingProducts to complete
