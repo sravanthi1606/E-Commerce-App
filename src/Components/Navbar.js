@@ -4,22 +4,45 @@ import { NavUserContext } from './RouterComponents';
 import { AiOutlineLogout } from "react-icons/ai";
 import logo_img from "../Assets/Login/logo_img.png"
 import { toast } from 'react-toastify';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 const Navbar = () => {
+    const [show, setShow] = useState(false);
 
     const { isAuth, setIsAuth } = useContext(NavUserContext);
     const navigate = useNavigate();
-    
+
+    const handleClose = () => {
+        if (isAuth) {
+            navigate("/home");
+        }
+        setShow(false);
+    };
+
+    const handleShow = () => setShow(true);
+
     const handleLogout = () => {
-        alert("Are you want to logout")
+        handleShow();
+    };
+   
+    const handleLogoutConfirm = () => {
         if (isAuth) {
             sessionStorage.removeItem("user");
             sessionStorage.removeItem("admin");
             setIsAuth(false);
         }
         navigate("*");
-        toast.success("Successfully Logged Out !!")
-    }
+        toast.success("Successfully Logged Out !!");
+        setShow(false);
+    };
+
+    const handleNo = () => {
+        handleClose();
+        if (isAuth) {
+            navigate("/home");
+        }
+    };
 
 
     return (
@@ -45,6 +68,22 @@ const Navbar = () => {
                     </Link>
                 </div>
             </div>
+
+        <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Confirmation</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Are you sure you want to log out?</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleLogoutConfirm}>
+                        Yes
+                    </Button>
+                    <Button variant="primary" onClick={handleNo}>
+                        No
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+    
         </div>
     )
 }
