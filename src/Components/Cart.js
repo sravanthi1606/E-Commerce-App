@@ -84,9 +84,9 @@ const Cart = () => {
                             <h1 className="single_product_title">{products.title}</h1>
                             <h6 className="single_product_category">Category - {products.category}</h6>
                             <span className="fw-bold">Quantity :</span>
-                            <button className="incdec_btn" onClick={() => handleDecrementQuantity(products.id)}>-</button>
+                            <button className="incdec_btn" onClick={() => handleDecrementQuantity(products.id)} disabled={products.qty===1}>-</button>
                             <span>{products.qty}</span>
-                            <button className="incdec_btn" onClick={() => handleIncrementQuantity(products.id)}>+</button>
+                            <button className="incdec_btn" onClick={() => handleIncrementQuantity(products.id)} disabled={products.qty === products.Originalqty}>+</button>
                             <p className="fw-bold">
                                 Total Price: {products.qty} X ${products.price} = ${products.qty * products.price}
                             </p>
