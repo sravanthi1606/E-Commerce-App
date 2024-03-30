@@ -14,7 +14,6 @@ const EditProductList = ({ productId, closeForm }) => {
     const [qty, setquantity] = useState("");
     const [category, setcategory] = useState("");
     const [error, setError] = useState("");
-    const [rating, setRating] = useState("");
     const [image, setImage] = useState();
 
     const dispatch = useDispatch();
@@ -31,7 +30,6 @@ const EditProductList = ({ productId, closeForm }) => {
             setdescription(currentProduct.description)
             setquantity(currentProduct.qty)
             setcategory(currentProduct.category)
-            setRating(currentProduct.rating)
             setImage(currentProduct.image)
         }
     }, [currentProduct])
@@ -39,7 +37,7 @@ const EditProductList = ({ productId, closeForm }) => {
 
     const handleEdit = async (event) => {
         event.preventDefault();
-        if (!title || !price || !description || !qty || !category || !rating) {
+        if (!title || !price || !description || !qty || !category) {
             setError("Please enter all fields");
         }
 
@@ -54,7 +52,6 @@ const EditProductList = ({ productId, closeForm }) => {
             "description": description,
             "qty": parseInt(qty),
             "category": category,
-            "rating": parseFloat(rating),
             "image": image
         }
        
@@ -108,11 +105,12 @@ const EditProductList = ({ productId, closeForm }) => {
                                 </div>
                                 <div>
                                     <label htmlFor="category">Category</label>
-                                    <input type="text" name="category" id="category" className="form-control" value={category} onChange={(event) => setcategory(event.target.value)}></input>
-                                </div>
-                                <div>
-                                    <label htmlFor="rating">Rating</label>
-                                    <input type="number" name="rating" id="rating" className="form-control" value={rating} onChange={(event) => setRating(event.target.value)}></input>
+                                    <select className="form-control" value={category} onChange={(event) => setcategory(event.target.value)}>
+                                        <option value="men's clothing">Men</option>
+                                        <option value="women's clothing">Women</option>
+                                        <option value="jewelery">Men</option>
+                                        <option value="electronics">Men</option>
+                                    </select>
                                 </div>
                                 <div>
                                     <label htmlFor="image">Image</label>
