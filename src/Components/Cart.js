@@ -38,7 +38,7 @@ const Cart = () => {
         }
 
         else {
-            dispatch(setErrorMessage(alert(("Cannot increase quantity beyond original quantity ,if you want to increase the quantity login as admin and edit the quantity value"))))
+            dispatch(setErrorMessage(toast.warn("Hurry up limited stock available !!"))
         }
 
     }
