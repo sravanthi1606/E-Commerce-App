@@ -7,9 +7,6 @@
 
 }
 
-
-
-
 /* Navbar Section */
 .navsection {
   position: sticky;
@@ -363,13 +360,20 @@
   border: none;
   margin: 10px;
 }
-
+.incdec_btn:disabled {
+  opacity: 0.5; 
+  cursor: not-allowed; 
+}
 .remove_btn {
   padding: 7px 15px;
   background-color: rgb(56, 122, 134);
   color: white;
   border: none;
   border-radius: 10px;
+}
+.remove_btn:disabled {
+  opacity: 0.5; 
+  cursor: not-allowed; 
 }
 
 .cart_empty {
