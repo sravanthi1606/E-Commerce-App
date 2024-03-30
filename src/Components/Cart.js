@@ -21,7 +21,6 @@ const Cart = () => {
         });
         setTotalAmount(total);
 
-
         localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart]);
 
