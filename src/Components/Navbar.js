@@ -44,7 +44,6 @@ const Navbar = () => {
         }
     };
 
-    
 
     return (
         <div className='navsection'>
