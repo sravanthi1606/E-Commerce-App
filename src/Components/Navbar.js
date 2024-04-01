@@ -22,6 +22,7 @@ const Navbar = () => {
 
     const handleShow = () => setShow(true);
 
+    
     const handleLogout = () => {
         handleShow();
     };
