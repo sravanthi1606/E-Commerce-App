@@ -10,6 +10,7 @@ const persistConfig = {
     storage,
   };
 
+
 const persistedReducer = persistReducer(persistConfig, rootReducers);
 
 const store = legacy_createStore(persistedReducer,applyMiddleware(thunk));
